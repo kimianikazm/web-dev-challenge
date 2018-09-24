@@ -1,0 +1,25 @@
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+  background-color: #7433f1;
+  border-color: #7433f1;
+}
+
+.header {
+  background-color: #7433f1;
+  color: white;
+  height: 100px;
+  padding-top: 2%;
+}
+
+.right-column {
+  background-color: #f3ecfe;
+  padding-left: 3%;
+  padding-left: 3%;
+}
+
+.left-column {
+  padding: 3%;
+}

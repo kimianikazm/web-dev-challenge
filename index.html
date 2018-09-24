@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Ristorante Con Fusion</title>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <link href="css/styles.css" rel="stylesheet">
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="js/template.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
+</head>
+
+<body>
+  <div class="header">
+    <div class="container text-center">
+      <h1>My Github Favorites</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 left-column">
+      <div class="container">
+        <form class="form-row">
+          <div class="col-9">
+            <input type="text" class="form-control" id="githubsearch" required />
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-primary btn-block" id="search">Submit</button>
+          </div>
+        </form>
+        <table class=" table mt-5 ">
+          <thead>
+            <tr>
+              <th scope="col ">Name</th>
+              <th scope="col ">Language</th>
+              <th scope="col ">Latest Tag</th>
+              <th scope="col "></th>
+            </tr>
+          </thead>
+          <tbody id="searchTable">
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-6 right-column ">
+      <div class="container ">
+        <table class="table mt-5 ">
+          <thead>
+            <tr>
+              <th scope="col ">Name</th>
+              <th scope="col ">Language</th>
+              <th scope="col ">Latest Tag</th>
+              <th scope="col "></th>
+            </tr>
+          </thead>
+          <tbody id="favTable">
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script src="node_modules/popper.js/dist/umd/popper.min.js "></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js "></script>
+</body>
+
+</html>
