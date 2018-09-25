@@ -17,18 +17,17 @@ ITEMTEMPLATE = `
                   </tr>`;
 
 FAVTEMPLATE = `  <tr id="REPO" class="favRow">
-                                      <th scope="row">
-                                        TAGREPONAME
-                                      </th>
-                                      <td> TAGREPOLANGUAGE</td>
-                                      <td> REPOTAGID</td>
-                                      <td>
-                                        <button
-                                          class="btn btn-primary btn-md"
-                                          id="removeButton"
-                                          onclick="removeFromFavourites('REMOVE')"
-                                        >
-                                          Remove
-                                        </button>
-                                      </td>
-                                    </tr>`;
+                    <th scope="row">
+                        TAGREPONAME
+                    </th>
+                    <td> TAGREPOLANGUAGE</td>
+                    <td> REPOTAGID</td>
+                    <td>
+                      <button
+                         class="btn btn-primary btn-md"
+                                id="removeButton"
+                                onclick="removeFromFavourites('REMOVE')"
+                                  >  Remove
+                      </button>
+              </td>
+              </tr>`;
