@@ -24,8 +24,12 @@ $(document).ready(function() {
 });
 
 function printRepoCount() {
-  repositories = JSON.parse(this.responseText);
-  getTag(repositories);
+  if (this.status == 200 && this.readyState == XMLHttpRequest.DONE) {
+    repositories = JSON.parse(this.responseText);
+    getTag(repositories);
+  } else {
+    alert("Failed to access the data, Please try again!");
+  }
 }
 
 function getTag(repositories) {
