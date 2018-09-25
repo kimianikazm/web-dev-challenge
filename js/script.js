@@ -1,6 +1,6 @@
 var flag;
 var repositories;
-var tag;
+var tag = [];
 var repository;
 var favourites = [];
 $(document).ready(function() {
@@ -25,46 +25,48 @@ $(document).ready(function() {
 
 function printRepoCount() {
   repositories = JSON.parse(this.responseText);
+  getTag(repositories);
+}
+
+function getTag(repositories) {
+  //console.log(repositories[name].full_name);
+  for (repo in repositories) {
+    var request = new XMLHttpRequest();
+    request.onload = tagName;
+    request.open(
+      "get",
+      "https://api.github.com/repos/" +
+        repositories[repo].full_name +
+        "/releases/latest"
+    );
+
+    //var responseObj = JSON.parse(request.responseText);
+    request.send();
+  }
+  console.log(tag);
   renderItems(repositories);
 }
 
+function tagName() {
+  var responseObj = JSON.parse(this.responseText);
+  tag.push(responseObj.tag_name);
+}
 /*
 * Renders the DOM from repositories provided
 *
 */
 function renderItems(repositories) {
   flag = true;
+  console.log("here" + tag[0]);
   for (repo in repositories) {
     tempItem = ITEMTEMPLATE;
     tempItem = tempItem.replace("REPONAME", repositories[repo].full_name);
     tempItem = tempItem.replace("REPOLANGUAGE", repositories[repo].language);
-    getTag(repo);
-    console.log(tag);
     tempItem = tempItem.replace("ADD", repo);
-    tempItem = tempItem.replace("REPOTAG", tag);
+    tempItem = tempItem.replace("REPOTAG", tag[repo]);
     $("#searchTable").append(tempItem);
   }
 }
-
-function getTag(name) {
-  //console.log(repositories[name].full_name);
-  var request = new XMLHttpRequest();
-  request.onload = tagName;
-  request.open(
-    "get",
-    "https://api.github.com/repos/" + repositories[name].full_name + "/releases"
-  );
-
-  //var responseObj = JSON.parse(request.responseText);
-  request.send();
-}
-
-function tagName() {
-  var responseObj = JSON.parse(this.responseText);
-  console.log(responseObj);
-  tag = responseObj.tag_name;
-}
-
 function addToFavourites(repo) {
   var index = favourites.indexOf(repo);
   if (index > -1) {
@@ -75,7 +77,7 @@ function addToFavourites(repo) {
     tempItem = FAVTEMPLATE;
     tempItem = tempItem.replace("TAGREPONAME", repositories[repo].full_name);
     tempItem = tempItem.replace("TAGREPOLANGUAGE", repositories[repo].language);
-    tempItem = tempItem.replace("REPOTAGID", repositories[repo].full_name);
+    tempItem = tempItem.replace("REPOTAGID", tag[repo]);
     tempItem = tempItem.replace("REPO", repo);
     tempItem = tempItem.replace("REMOVE", repo);
     $("#favTable").append(tempItem);

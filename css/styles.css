@@ -6,7 +6,11 @@
   background-color: #7433f1;
   border-color: #7433f1;
 }
-
+html,
+body,
+.row {
+  height: 100%;
+}
 .header {
   background-color: #7433f1;
   color: white;
