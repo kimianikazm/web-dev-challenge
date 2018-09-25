@@ -1,4 +1,5 @@
 var flag;
+var tagFlag = false;
 var repositories;
 var tag = [];
 var repository;
@@ -9,6 +10,8 @@ $(document).ready(function() {
       $(".searchRow").remove();
       $(".favRow").remove();
       favourites = [];
+      tagFlag = false;
+      flag = false;
     }
     var username = document.getElementById("githubsearch").value;
     var request = new XMLHttpRequest();
@@ -47,9 +50,18 @@ function getTag(repositories) {
     //var responseObj = JSON.parse(request.responseText);
     request.send();
   }
+
   console.log(tag);
-  renderItems(repositories);
+  console.log(tagFlag);
+  tagFlag = true;
 }
+
+var renderTime = setInterval(function() {
+  if (tagFlag) {
+    renderItems(repositories);
+    clearInterval(renderTime);
+  }
+}, 1000);
 
 function tagName() {
   var responseObj = JSON.parse(this.responseText);
@@ -64,6 +76,9 @@ function renderItems(repositories) {
   for (repo in repositories) {
     if (repositories[repo].language == null) {
       repositories[repo].language = "-";
+    }
+    if (tag[repo] == undefined) {
+      tag[repo] = "-";
     }
     tempItem = ITEMTEMPLATE;
     tempItem = tempItem.replace("REPONAME", repositories[repo].full_name);
