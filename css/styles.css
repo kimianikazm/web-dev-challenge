@@ -7,8 +7,7 @@
   border-color: #7433f1;
 }
 html,
-body,
-.row {
+body {
   height: 100%;
 }
 .header {
@@ -22,6 +21,7 @@ body,
   background-color: #f3ecfe;
   padding-left: 3%;
   padding-left: 3%;
+  height: 100vh;
 }
 
 .left-column {

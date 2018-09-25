@@ -61,8 +61,10 @@ function tagName() {
 */
 function renderItems(repositories) {
   flag = true;
-  console.log("here" + tag[0]);
   for (repo in repositories) {
+    if (repositories[repo].language == null) {
+      repositories[repo].language = "-";
+    }
     tempItem = ITEMTEMPLATE;
     tempItem = tempItem.replace("REPONAME", repositories[repo].full_name);
     tempItem = tempItem.replace("REPOLANGUAGE", repositories[repo].language);
