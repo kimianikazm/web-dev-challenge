@@ -13,6 +13,13 @@ $(document).ready(function() {
       tagFlag = false;
       flag = false;
     }
+    var renderTime = setInterval(function() {
+      console.log("HERE");
+      if (tagFlag) {
+        renderItems(repositories);
+        clearInterval(renderTime);
+      }
+    }, 1000);
     var username = document.getElementById("githubsearch").value;
     var request = new XMLHttpRequest();
     // Initialize a request
@@ -54,14 +61,8 @@ function getTag(repositories) {
   console.log(tag);
   console.log(tagFlag);
   tagFlag = true;
+  console.log(tagFlag);
 }
-
-var renderTime = setInterval(function() {
-  if (tagFlag) {
-    renderItems(repositories);
-    clearInterval(renderTime);
-  }
-}, 1000);
 
 function tagName() {
   var responseObj = JSON.parse(this.responseText);
