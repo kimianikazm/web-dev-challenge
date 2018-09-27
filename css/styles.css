@@ -21,7 +21,7 @@ body {
   background-color: #f3ecfe;
   padding-left: 3%;
   padding-left: 3%;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .left-column {
